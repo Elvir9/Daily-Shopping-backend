@@ -1,4 +1,4 @@
-import express, {Application, Router} from 'express';
+import express, {Application} from 'express';
 import mongoose from 'mongoose';
 import AuthController from './routes/auth';
 import ListRoutes from './routes/list';

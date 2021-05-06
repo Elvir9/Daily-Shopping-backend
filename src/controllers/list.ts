@@ -1,6 +1,5 @@
 import ShoppingList from '../models/shoppingList';
 import {Request, Response, NextFunction} from 'express';
-import mongoose from 'mongoose';
 
 // CREATE articles shopping list
 export const shoppingList = async (req: Request, res: Response, next: NextFunction) => {
@@ -90,5 +89,29 @@ export const getList = async (req: Request, res: Response) => {
         }
     }catch(error){
         res.status(500).json({error: error});
+    }
+}
+
+// AGGREGATE within time range
+
+export const aggregateList = async (req: Request, res: Response) => {
+    const {startDate, endDate} = req.body;
+    console.log(startDate)
+    console.log(endDate)
+    try{
+        const aggregateGroup = await ShoppingList.aggregate(
+            [
+                {
+                    $match: {createdAt: {$gte: new Date(startDate), $lte: new Date(endDate)}}
+                },
+            ]
+        );
+        if(aggregateGroup){
+            res.status(200).json({aggregateGroup})
+        }
+        console.log(aggregateGroup);
+    }catch(error){
+        console.log('error')
+        res.status(500).json({message: error})
     }
 }
