@@ -4,7 +4,7 @@ import AuthController from './routes/auth';
 import ListRoutes from './routes/list';
 
 const app: Application = express();
-const port = 3000;
+const port = 8080;
 
 mongoose.connect(
   `mongodb+srv://elvir:test@cluster0.ucllv.mongodb.net/walter-backend?retryWrites=true&w=majority`, {

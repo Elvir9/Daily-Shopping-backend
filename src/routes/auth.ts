@@ -6,7 +6,7 @@ import {checkDuplicateUsername} from '../middlewares/verifySignUp';
 const router = Router();
 
 router.post('/signup', checkDuplicateUsername, register);
-router.post('/signin', requireAuth, login);
+router.post('/signin', login);
 router.patch('/reset-password', requireAuth, changePassword);
 
 export default router;
