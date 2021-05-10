@@ -55,7 +55,7 @@ The response should look like similar to the following:
   `username=[string], password=[string]`
 
 * **Success Response:**
-  * **Code:** 201 ,br/>
+  * **Code:** 201 <br/>
     **Content:** `{user: {
      id,username, password, createdAt, updatedAt 
     }}`  
