@@ -70,4 +70,248 @@ The response should look like similar to the following:
 
   * **Code:** 401 UNAUTHORIZED <br />
     **Content:** `{ error : "You are unauthorized to make this request." }`
+    
+# User login
 
+* **localhost:8080**
+  /api/auth/signin
+  
+*  **Method:**
+   `POST`
+
+* **Data Params**
+  
+  **Required:**
+  
+  `username=[string], password=[string]`
+
+* **Success Response:**
+  * **Code:** 200 <br/>
+    **Content:** `{token, user: {
+     id,username, password, createdAt, updatedAt 
+    }}`  
+
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ error : "User validation faild" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "You are unauthorized to make this request." }`
+
+# User change password
+
+* **localhost:8080**
+  /api/auth/reset-password
+  
+*  **Method:**
+   `POST`
+
+* **Data Params**
+  
+  **Required:**
+  
+  `token=[string], newPassword=[string]`
+
+* **Success Response:**
+  * **Code:** 200 <br/>
+    **Content:** `{status: {
+     "Password changed!" 
+    }}`  
+
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ error : "User validation faild" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "You are unauthorized to make this request." }`
+
+# Create list
+
+* **localhost:8080**
+  /api/auth/create-list
+  
+*  **Method:**
+   `POST`
+
+*  **URL Params**
+
+   **Required:**
+ 
+   `token=[integer]
+   
+* **Data Params**
+  
+  **Required:**
+  
+  `listName=[string], userId=[string], 
+  articles=[
+    {
+      articleName=[string],
+      amount=[number]
+    }
+  ]`
+
+* **Success Response:**
+  * **Code:** 201 <br/>
+    **Content:** `{user: {
+     id,listName, articleName, amount, createdAt, updatedAt 
+    }}`  
+
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ error : "Error create list" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "You are unauthorized to make this request." }`
+  
+   OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "jwt expired." }`
+    
+# Update list
+
+* **localhost:8080**
+  /api/auth/edit/:id
+  
+*  **Method:**
+   `PATCH`
+   
+* **URL Params**
+  **Required:**
+  
+  `token=[integer]`
+
+*  **Path Params**
+
+   **Required:**
+ 
+   `id=[string]
+   
+* **Data Params**
+  
+  **Required:**
+  
+  `listName=[string], userId=[string], 
+  articles=[
+    {
+      articleName=[string],
+      amount=[number]
+    }
+  ]`
+
+* **Success Response:**
+  * **Code:** 202 <br/>
+    **Content:** `{message: {
+     List was updated successfully.
+    }}`  
+
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ error : "Error updating list with id" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "You are unauthorized to make this request." }`
+  
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "jwt expired." }`
+    
+# Delete list
+
+* **localhost:8080**
+  /api/auth/delete/:id
+  
+*  **Method:**
+   `DELETE`
+   
+* **URL Params**
+  **Required:**
+  
+  `token=[integer]`
+  
+*  **Path Params**
+
+   **Required:**
+ 
+   `id=[string]
+
+* **Success Response:**
+  * **Code:** 200 <br/>
+    **Content:** `{message: {
+     List delete successfully.
+    }}`  
+
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ error : "Error deleting list with id" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "You are unauthorized to make this request." }`
+  
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "jwt expired." }`
+    
+# Get user lists
+
+* **localhost:8080**
+  /api/auth
+  
+*  **Method:**
+   `GET`
+   
+* **URL Params**
+  **Required:**
+  
+  `token=[integer]`
+
+*  **Path Params**
+
+   **Required:**
+ 
+   `id=[string]
+
+* **Success Response:**
+  * **Code:** 200 <br/>
+    **Content:** `{message: {
+     lists
+    }}`  
+
+ 
+* **Error Response:**
+
+  * **Code:** 500 Internal Server Error <br />
+    **Content:** `{ error : "Error getting list with id" }`
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "You are unauthorized to make this request." }`
+  
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:** `{ error : "jwt expired." }`
