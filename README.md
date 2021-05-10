@@ -16,7 +16,7 @@ You will also see any lint errors in the console.
 
 With this script you can build application for production mode. After script is runned it will create build directory in the project root strucure.
 
-# The application is dockerizing using separate Docker containers, one for Node.js and other one for database, for this case MongoDB. 
+## The application is dockerizing using separate Docker containers, one for Node.js and other one for database, for this case MongoDB. 
 
 For raise up containers we need to run 
 
