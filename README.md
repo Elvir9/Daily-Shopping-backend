@@ -109,6 +109,11 @@ The response should look like similar to the following:
   
 *  **Method:**
    `POST`
+   
+* **URL Params**
+  **Required:**
+  
+  `token=[integer]`
 
 * **Data Params**
   
