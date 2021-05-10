@@ -20,14 +20,14 @@ With this script you can build application for production mode. After script is 
 
 # For raise up containers we need to run 
 
-``` shell docker-compose up```
+``` docker-compose up```
 
 # If we need to see which container is rasied up we need to run
 
-``` shell docker ps```
+``` docker ps```
 
 # If we did some changes then we need to run 
 
-``` shell docker-compose build```
+```  docker-compose build```
 
 # to rebuild those changes and repeat process
